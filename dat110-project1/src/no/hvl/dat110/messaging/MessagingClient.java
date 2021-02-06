@@ -16,7 +16,7 @@ public class MessagingClient {
 
 	/**
 	 * Connect to messaging server
-	 * @return
+	 * @return Connection object
 	 * @throws IOException
 	 */
 	public Connection connect() throws IOException {

@@ -16,9 +16,7 @@ public class Connection {
 		try {
 
 			this.socket = socket;
-
 			outStream = new DataOutputStream(socket.getOutputStream());
-
 			inStream = new DataInputStream(socket.getInputStream());
 
 		} catch (IOException ex) {
@@ -30,12 +28,13 @@ public class Connection {
 
 	/**
 	 * Encapsulate the data contained in the message and write to the output stream
+	 * 
 	 * @param message
 	 */
 	public void send(Message message) {
 
 		byte[] encodedMessage = message.encapsulate();
-		
+
 		try {
 			outStream.write(encodedMessage);
 		} catch (IOException e) {
@@ -46,6 +45,7 @@ public class Connection {
 
 	/**
 	 * Read a segment (128 bytes) from the input stream and decapsulate into message
+	 * 
 	 * @return Message object
 	 */
 	public Message receive() {
@@ -58,14 +58,14 @@ public class Connection {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		message.decapsulate(recvbuf);
-		
+
 		return message;
 
 	}
 
-	/** 
+	/**
 	 * Close the connection by closing streams and the underlying socket
 	 */
 	public void close() {
@@ -74,8 +74,8 @@ public class Connection {
 
 			outStream.close();
 			inStream.close();
-
 			socket.close();
+			
 		} catch (IOException ex) {
 
 			System.out.println("Connection: " + ex.getMessage());

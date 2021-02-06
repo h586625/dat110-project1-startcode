@@ -33,10 +33,7 @@ public class MessagingServer {
 		Socket serverSocket = null;
 
 		try {
-			/**
-			 * ServerSocket accept() Listens for a connection to be made to this socket and
-			 * accepts it.
-			 */
+			//ServerSocket accept() listens for a connection to be made to this socket and accepts it.
 			serverSocket = welcomeSocket.accept();
 		} catch (Exception e) {
 			e.printStackTrace();

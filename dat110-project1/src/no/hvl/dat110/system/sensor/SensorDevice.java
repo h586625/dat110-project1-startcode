@@ -15,7 +15,11 @@ public class SensorDevice {
 		
 	    sensorserver.register(1,sensor);
 		
-		sensorserver.run();
+		try {
+			sensorserver.run();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		sensorserver.stop();
 		
