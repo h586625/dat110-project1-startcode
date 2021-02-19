@@ -5,12 +5,12 @@ public class Message {
 	private byte[] payload;
 
 	public Message(byte[] payload) throws Exception {
-		if (payload.length > (MessageConfig.SEGMENTSIZE - 1)) {
+		if (payload == null || payload.length > (MessageConfig.SEGMENTSIZE - 1)) {
 			throw new IllegalArgumentException(
 					"Payload kan ikke være større enn " + (MessageConfig.SEGMENTSIZE - 1) + " bytes");
-		} else {
-			this.payload = payload;
 		}
+		this.payload = payload;
+
 	}
 
 	public Message() {
@@ -19,6 +19,7 @@ public class Message {
 
 	/**
 	 * Get the payload data from Message
+	 * 
 	 * @return byte[] payload
 	 */
 	public byte[] getData() {
